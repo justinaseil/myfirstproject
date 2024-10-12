@@ -18,6 +18,8 @@ void mediana(Stud &Lok);
 void galutinismed(Stud &Lok);
 void autom(Stud &Lok);
 void nuskaitymas(vector<Stud> &students, const string &filename);
+void genfailas(const string& filename, int numStudents);
+
 
 
 #endif // STUD_H_INCLUDED

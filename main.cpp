@@ -15,41 +15,45 @@ int main() {
         string filename;
         cout << "Enter the filename: ";
         getline(cin, filename);
-        try {
-            nuskaitymas(vec1, filename);
-        } catch (const std::exception &e) {
-            cout << "Error: " << e.what() << endl;
-            return 1; // return error code if file reading fails
-        }
+        nuskaitymas(vec1, filename);
     } else {
-        cout << "How many students do you have? ";
-        int n;
-        while (!(cin >> n) || n < 0) {
-            cout << "Error. Please enter a valid number." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cout << "Do you want to generate student data files? (Y/N): ";
+        cin >> choice;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        for (int i = 0; i < n; i++) {
-            cout << "Please input user data for student " << endl;
-
-            cout << "Do you want to generate random grades for this student? (Y/N): ";
-            cin >> choice;
+        if (choice == 'Y' || choice == 'y') {
+            genfailas("studentai1000.txt", 1000);
+            genfailas("studentai10000.txt", 10000);
+            genfailas("studentai100000.txt", 100000);
+            genfailas("studentai1000000.txt", 1000000);
+            genfailas("studentai10000000.txt", 10000000);
+            return 0;
+        } else {
+            cout << "How many students do you have? ";
+            int n;
+            cin >> n;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-            if (choice == 'Y' || choice == 'y') {
-                autom(Temp);
-            } else if (choice == 'N' || choice == 'n') {
-                ived(Temp);
-            } else {
-                cout << "Error. Try again." << endl;
-                --i;
-                continue;
-            }
+            for (int i = 0; i < n; i++) {
+                cout << "Please input user data for student " << endl;
 
-            vec1.push_back(Temp);
-            val(Temp);
+                cout << "Do you want to generate random grades for this student? (Y/N): ";
+                cin >> choice;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+                if (choice == 'Y' || choice == 'y') {
+                    autom(Temp);
+                } else if (choice == 'N' || choice == 'n') {
+                    ived(Temp);
+                } else {
+                    cout << "Error. Try again." << endl;
+                    --i;
+                    continue;
+                }
+
+                vec1.push_back(Temp);
+                val(Temp);
+            }
         }
     }
 

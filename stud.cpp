@@ -1,5 +1,34 @@
 #include "stud.h"
 
+void genfailas(const string& filename, int numStudents) {
+    ofstream file(filename);
+    if (!file.is_open()) {
+        cout << "Error opening file." << endl;
+        return;
+    }
+
+    file << "Vardas Pavarde ";
+    for (int i = 1; i <= 10; ++i) {
+        file << "ND" << i << " ";
+    }
+    file << "Egzaminas" << endl;
+
+    srand(time(0));
+
+    for (int i = 1; i <= numStudents; ++i) {
+        file << "Vardas" << i << " Pavarde" << i << " ";
+
+        for (int j = 0; j < 10; ++j) {
+            file << rand() % 10 + 1 << " ";
+        }
+
+        file << rand() % 10 + 1 << endl;
+    }
+
+    file.close();
+    cout << "File " << filename << " with " << numStudents << " students generated successfully." << endl;
+}
+
 
 void nuskaitymas(vector<Stud> &students, const string &filename) {
     ifstream file(filename);
