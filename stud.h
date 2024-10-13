@@ -7,6 +7,7 @@ struct Stud {
     string vardas, pavarde;
     vector<double> ND;
     double vid, med, egz, rezvid, rezmed;
+    bool sumediana;
 };
 
 void ived(Stud &Lok);

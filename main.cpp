@@ -4,8 +4,11 @@
 
 int main() {
     vector<Stud> vec1;
+    vector<Stud> vargsiukai;
+    vector<Stud> kietekai;
     Stud Temp;
     char choice;
+    bool sumediana = false;
 
     cout << "Do you want to read student data from a file? (Y/N): ";
     cin >> choice;
@@ -51,27 +54,67 @@ int main() {
                     continue;
                 }
 
+                cout << "Do you want to calculate the final grade with median or with average ? (M/A): ";
+                cin >> choice;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                if (choice == 'M' || choice == 'm') {
+                        sumediana = true;
+                }
+                for (int i = 0; i < vec1.size(); i++) {
+                        if (sumediana) {
+                            galutinismed(vec1.at(i));
+                } else {
+                    galutinisvid(vec1.at(i));
+                    }
+                }
+
                 vec1.push_back(Temp);
                 val(Temp);
             }
         }
     }
 
-    for (int i = 0; i < vec1.size(); i++) {
-        galutinisvid(vec1.at(i));
-        galutinismed(vec1.at(i));
+
+    for (auto &student : vec1) {
+        if (student.sumediana) {
+            galutinismed(student);
+            if (student.rezmed < 5.0) {
+                vargsiukai.push_back(student);
+            } else {
+                kietekai.push_back(student);
+            }
+        } else {
+            galutinisvid(student);
+            if (student.rezvid < 5.0) {
+                vargsiukai.push_back(student);
+            } else {
+                kietekai.push_back(student);
+            }
+        }
     }
 
-    sort(vec1.begin(), vec1.end(), [](const Stud &a, const Stud &b) {
+    sort(kietekai.begin(), kietekai.end(), [](const Stud &a, const Stud &b) {
         return a.vardas < b.vardas;
     });
 
-    cout << "Vardas" << setw(20) << "Pavardė" << setw(25) << "Galutinis (Vid.)" << setw(20) << "Galutinis (Med.)" << endl;
-    cout << "-----------------------------------------------------------------------" << endl;
+    sort(vargsiukai.begin(), vargsiukai.end(), [](const Stud &a, const Stud &b) {
+        return a.vardas < b.vardas;
+    });
 
-    for (int i = 0; i < vec1.size(); i++) {
-        output(vec1.at(i));
+    cout << "Kietekai" << endl;
+    cout << "Vardas" << setw(20) << "Pavardė" << setw(30) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
+    cout << "-----------------------------------------------------------------------" << endl;
+    for (const auto& student : kietekai) {
+        output(student);
     }
+
+    cout << "\nVargsiukai" << endl;
+    cout << "Vardas" << setw(20) << "Pavardė" << setw(25) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
+    cout << "-----------------------------------------------------------------------" << endl;
+    for (const auto& student : vargsiukai) {
+        output(student);
+    }
+
 
     char a;
     cout << "Press any key to exit..." << endl;
@@ -79,4 +122,3 @@ int main() {
 
     return 0;
 }
-

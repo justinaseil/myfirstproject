@@ -154,11 +154,15 @@ void galutinismed(Stud &Lok) {
 void output(Stud Lok) {
     cout << left << setw(18) << Lok.vardas
          << setw(20) << Lok.pavarde
-         << fixed << setprecision(2)
-         << Lok.rezvid << "                      "
-         << fixed << setprecision(2)
-         << Lok.rezmed << endl;
+         << fixed << setprecision(2);
+
+    if (Lok.sumediana) {
+        cout << Lok.rezmed << endl;
+    } else {
+        cout << Lok.rezvid << endl;
+    }
 }
+
 
 void val(Stud &Lok) {
     Lok.vardas.clear();
