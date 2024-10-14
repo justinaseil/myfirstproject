@@ -150,6 +150,26 @@ void galutinismed(Stud &Lok) {
     Lok.rezmed = 0.4 * Lok.med + 0.6 * Lok.egz;
 }
 
+void ratefailas(const vector<Stud>& students, ofstream& outFile, const string& title) {
+    outFile << title << ":\n";
+    outFile << left << setw(20) << "Vardas"
+            << setw(25) << "Pavardė"
+            << setw(30) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
+    outFile << "-----------------------------------------------------------------------" << endl;
+
+    for (const auto& student : students) {
+        outFile << left << setw(20) << student.vardas
+                << setw(25) << student.pavarde
+                << fixed << setprecision(2);
+
+        if (student.sumediana) {
+            outFile << student.rezmed << endl;
+        } else {
+            outFile << student.rezvid << endl;
+        }
+    }
+}
+
 
 void output(Stud Lok) {
     cout << left << setw(18) << Lok.vardas
