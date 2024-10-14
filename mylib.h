@@ -35,6 +35,7 @@ using std::istringstream;
 using std::ofstream;
 using std::to_string;
 using namespace std::chrono;
+using std::runtime_error;
 
 
 #endif // MYLIB_H_INCLUDED

@@ -11,6 +11,32 @@ int main() {
     bool sumediana = false;
 
     while (true) {
+        cout << "Do you want to test the file generation and reading? (Y/N): ";
+        cin >> choice;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (choice == 'Y' || choice == 'y') {
+            testavimas();
+
+        cout << "Do you want to continue the program? (Y/N): ";
+        cin >> choice;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (choice == 'N' || choice == 'n') {
+            return 0;
+        } else if (choice == 'Y' || choice == 'y'){
+            break;
+        } else {
+        cout << "Error.Try again" << endl;
+        }
+    } else if (choice == 'N' || choice == 'n') {
+        break;
+    } else {
+        cout << "Error. Try again." << endl;
+    }
+    }
+
+    while (true) {
         cout << "Do you want to read student data from a file? (Y/N): ";
         cin >> choice;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -24,7 +50,8 @@ int main() {
     if (choice == 'Y' || choice == 'y') {
         string filename;
         cout << "Enter the filename: ";
-        getline(cin, filename);
+        cin >> filename;
+
         nuskaitymas(vec1, filename);
 
         while (true) {
@@ -64,11 +91,7 @@ int main() {
         }
 
         if (choice == 'Y' || choice == 'y') {
-            genfailas("studentai1000.txt", 1000);
-            genfailas("studentai10000.txt", 10000);
-            genfailas("studentai100000.txt", 100000);
-            genfailas("studentai1000000.txt", 1000000);
-            genfailas("studentai10000000.txt", 10000000);
+            generuotifailus();
             return 0;
         } else {
             int n;
@@ -130,35 +153,15 @@ int main() {
         }
     }
 
-    for (auto &student : vec1) {
-        if (sumediana) {
-            galutinismed(student);
-            if (student.rezmed < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
-        } else {
-            galutinisvid(student);
-            if (student.rezvid < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
-        }
-    }
+    rusiavimas(vec1, vargsiukai, kietekai, sumediana);
 
-    sort(kietekai.begin(), kietekai.end(), [](const Stud &a, const Stud &b) {
-        return a.vardas < b.vardas;
-    });
+    sortabc(kietekai);
+    sortabc(vargsiukai);
 
-    sort(vargsiukai.begin(), vargsiukai.end(), [](const Stud &a, const Stud &b) {
-        return a.vardas < b.vardas; //patikrinti, kaip ten su didziosiom
-    });
 
     cout << "\nKietekai:\n";
     cout << left << setw(18) << "Vardas" << setw(18) << "Pavardė" << setw(25) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
-    cout << "-----------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------------------" << endl;
 
     for (const auto& student : kietekai) {
         output(student);
@@ -166,7 +169,7 @@ int main() {
 
     cout << "\nVargšiukai:\n";
     cout << left << setw(18) << "Vardas" << setw(18) << "Pavardė" << setw(25) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
-    cout << "-----------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------------------" << endl;
 
     for (const auto& student : vargsiukai) {
         output(student);
@@ -174,6 +177,7 @@ int main() {
 
     ratefailas(kietekai, "kietekai.txt", "Kietekai");
     ratefailas(vargsiukai, "vargsiukai.txt", "Vargšiukai");
+
 
     char a;
     cout << "Press any key to exit..." << endl;

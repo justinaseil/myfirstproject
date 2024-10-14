@@ -21,7 +21,10 @@ void autom(Stud &Lok);
 void nuskaitymas(vector<Stud> &students, const string &filename);
 void genfailas(const string& filename, int numStudents);
 void ratefailas(const vector<Stud>& students, const string& filename, const string& title);
-
+void rusiavimas(const vector<Stud>& students, vector<Stud>& vargsiukai, vector<Stud>& kietekai, bool sumediana);
+void testavimas();
+void generuotifailus();
+void sortabc(vector<Stud>& students);
 
 
 #endif // STUD_H_INCLUDED
