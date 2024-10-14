@@ -20,7 +20,7 @@ void galutinismed(Stud &Lok);
 void autom(Stud &Lok);
 void nuskaitymas(vector<Stud> &students, const string &filename);
 void genfailas(const string& filename, int numStudents);
-void ratefailas(const vector<Stud>& students, ofstream& outFile, const string& title);
+void ratefailas(const vector<Stud>& students, const string& filename, const string& title);
 
 
 

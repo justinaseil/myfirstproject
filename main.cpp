@@ -156,24 +156,6 @@ int main() {
         return a.vardas < b.vardas; //patikrinti, kaip ten su didziosiom
     });
 
-
-    ofstream kietekaiFile("kietekai.txt");
-    ofstream vargsiukaiFile("vargsiukai.txt");
-
-    if (kietekaiFile.is_open()) {
-        ratefailas(kietekai, kietekaiFile, "Kietekai");
-        kietekaiFile.close();
-    } else {
-        cout << "Nepavyko atidaryti kietekai.txt failo." << endl;
-    }
-
-    if (vargsiukaiFile.is_open()) {
-        ratefailas(vargsiukai, vargsiukaiFile, "Vargšiukai");
-        vargsiukaiFile.close();
-    } else {
-        cout << "Nepavyko atidaryti vargsiukai.txt failo." << endl;
-    }
-
     cout << "\nKietekai:\n";
     cout << left << setw(18) << "Vardas" << setw(18) << "Pavardė" << setw(25) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
     cout << "-----------------------------------------------------------------------" << endl;
@@ -190,8 +172,8 @@ int main() {
         output(student);
     }
 
-    cout << "Files kietekai.txt and vargsiukai.txt have been written." << endl;
-
+    ratefailas(kietekai, "kietekai.txt", "Kietekai");
+    ratefailas(vargsiukai, "vargsiukai.txt", "Vargšiukai");
 
     char a;
     cout << "Press any key to exit..." << endl;

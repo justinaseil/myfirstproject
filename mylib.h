@@ -13,6 +13,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 
 using std::endl;
 using std::cout;
@@ -33,7 +34,7 @@ using std::getline;
 using std::istringstream;
 using std::ofstream;
 using std::to_string;
-
+using namespace std::chrono;
 
 
 #endif // MYLIB_H_INCLUDED

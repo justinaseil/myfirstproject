@@ -1,6 +1,9 @@
 #include "stud.h"
 
 void genfailas(const string& filename, int numStudents) {
+
+    auto start = steady_clock::now();
+
     ofstream file(filename);
     if (!file.is_open()) {
         cout << "Error opening file." << endl;
@@ -26,8 +29,13 @@ void genfailas(const string& filename, int numStudents) {
     }
 
     file.close();
-    cout << "File " << filename << " with " << numStudents << " students generated successfully." << endl;
+
+    auto end = steady_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start).count();
+
+    cout << "File " << filename << " created in " << duration << " ms." << endl;
 }
+
 
 
 void nuskaitymas(vector<Stud> &students, const string &filename) {
@@ -150,24 +158,36 @@ void galutinismed(Stud &Lok) {
     Lok.rezmed = 0.4 * Lok.med + 0.6 * Lok.egz;
 }
 
-void ratefailas(const vector<Stud>& students, ofstream& outFile, const string& title) {
-    outFile << title << ":\n";
-    outFile << left << setw(20) << "Vardas"
-            << setw(25) << "Pavardė"
-            << setw(30) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
-    outFile << "-----------------------------------------------------------------------" << endl;
+void ratefailas(const vector<Stud>& students, const string& filename, const string& title) {
+    auto start = steady_clock::now();
 
-    for (const auto& student : students) {
-        outFile << left << setw(20) << student.vardas
-                << setw(25) << student.pavarde
-                << fixed << setprecision(2);
+    ofstream file(filename);
+    if (file.is_open()) {
+        file << title << ":\n";
+        file << left << setw(20) << "Vardas"
+             << setw(25) << "Pavardė"
+             << setw(30) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
+        file << "-----------------------------------------------------------------------" << endl;
 
-        if (student.sumediana) {
-            outFile << student.rezmed << endl;
-        } else {
-            outFile << student.rezvid << endl;
+        for (const auto& student : students) {
+            file << left << setw(20) << student.vardas
+                 << setw(25) << student.pavarde
+                 << fixed << setprecision(2);
+            if (student.sumediana) {
+                file << student.rezmed << endl;
+            } else {
+                file << student.rezvid << endl;
+            }
         }
+
+        file.close();
+    } else {
+        cout << "Nepavyko atidaryti " << filename << " failo." << endl;
     }
+
+    auto end = steady_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start).count();
+    cout << "File " << filename << " created in " << duration << " ms." << endl;
 }
 
 
