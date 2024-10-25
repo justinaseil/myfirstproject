@@ -16,7 +16,7 @@
 ## HHD
 - **Magnetinis HHD**
 
-Pirmiausia buvo sukuriami failai, kad testavimas vyktu sklandžiai ir su tokiais pat duomenimis.
+### Pirmiausia buvo sukuriami failai, kad testavimas vyktu sklandžiai ir su tokiais pat duomenimis.
 
 ## Failų generavimas
 - **1000 įrašų**: 0.0157 s
@@ -25,7 +25,7 @@ Pirmiausia buvo sukuriami failai, kad testavimas vyktu sklandžiai ir su tokiais
 - **1000000 įrašų**: 6.7897 s
 - **10000000 įrašų**: 52.1942 s
 
-Tada programa atliko failų su skirtingu skaičiumi įrašų testavimus, lentelių duomenims gauti kiekvienas failas buvo testuotas 3 kartus ir išvestas vidurkis.
+### Tada programa atliko failų, su skirtingu skaičiumi įrašų, testavimus, lentelių duomenims gauti kiekvienas failas buvo testuotas 3 kartus ir išvestas vidurkis.
 
 ## Testavimas su 1000 įrašų
 
@@ -89,8 +89,8 @@ Tada programa atliko failų su skirtingu skaičiumi įrašų testavimus, lenteli
 |**Įrašymas į failą "vargšiukai.txt"**   | 40.1192 s        | 39.257 s       | list              |
 |**Bendras**                             | 86.5879 s        | 82.7185 s      | list              |
 
-##Išvada
+## Išvada
 
-Galima padaryti išvadą, kad konteinerio vector sparta yra didesnė nei list, išskyrus testavimą su didžiausiu kiekiu duomenų (10000000 įrašų). "Vargšiukų" duomenų buvo daugiau nei "kietekų" ir galime matyti, kad rušiuojant didesnį kiekį duomenų geriau pasirodė konteineris list, ypač rūšiuojant pagal vardus. Todėl pagal šį testavimą galima teigti, kad list geriau greičiau tvarkosi su didesniu kiekiu duomenų, o vector su mažesniu. 
+Matome, kad konteinerio vector sparta yra didesnė nei list, išskyrus testavimą su didžiausiu kiekiu duomenų (10000000 įrašų). "Vargšiukų" duomenų buvo daugiau nei "kietekų" ir galime matyti, kad rušiuojant didesnį kiekį duomenų geriau pasirodė konteineris list, ypač rūšiuojant pagal vardus. Todėl pagal šį testavimą galima padaryti išvadą, kad list greičiau tvarkosi su didesniu kiekiu duomenų, o vector su mažesniu, bet visgi vector yra greitesnis.
 
 
