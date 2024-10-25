@@ -74,7 +74,7 @@
 |**Rūšiavimas "kietekų" pagal vardus**   | 0.77 ms          | 0.11 ms        | list              |
 |**Rūšiavimas "vargšiukų" pagal vardus** | 0.8367 s         | 0.2612 s       | list              |
 |**Įrašymas į failą "kietetai.txt"**     | 0.0052 s         | 0.0069 s       | vector            |
-|**Įrašymas į failą "vargšiukai.txt"**   | 4.0238 s         | 3.9485 s       | vector            |
+|**Įrašymas į failą "vargšiukai.txt"**   | 4.0238 s         | 3.9485 s       | list              |
 |**Bendras**                             | 8.3194 s         | 8.9556 s       | vector            |
 
 ## Testavimas su 10000000 įrašų
