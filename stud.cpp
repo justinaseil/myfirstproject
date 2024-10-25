@@ -45,53 +45,6 @@ void genfailas(const string& filename, int numStudents) {
 }
 
 
-
-
-void nuskaitymas(vector<Stud> &students, const string &filename) {
-
-    auto start = steady_clock::now();
-
-    ifstream file(filename);
-    if (!file.is_open()) {
-        throw runtime_error("Error opening file.");
-    }
-
-    string header;
-    getline(file, header);
-
-    string line;
-    while (getline(file, line)) {
-        istringstream ss(line);
-        Stud student;
-        ss >> student.vardas >> student.pavarde;
-
-        double grade;
-        while (ss >> grade) {
-            if (grade >= 0 && grade <= 10) {
-                student.ND.push_back(grade);
-            } else {
-                throw runtime_error("Invalid grade format in file.");
-            }
-        }
-
-        if (!student.ND.empty()) {
-            student.egz = student.ND.back();
-            student.ND.pop_back();
-        } else {
-            throw runtime_error("No grades found in file.");
-        }
-
-        students.push_back(student);
-    }
-
-    file.close();
-
-    auto end = steady_clock::now();
-    duration<double> diff = duration_cast<duration<double>>(end - start);
-
-    cout << "File " << filename << " read in " << diff.count() << " s." << endl;
-}
-
 void ived(Stud &Lok) {
     cout << "Input Name and Surname: ";
     cin >> Lok.vardas >> Lok.pavarde;
@@ -175,76 +128,6 @@ void galutinismed(Stud &Lok) {
     Lok.rezmed = 0.4 * Lok.med + 0.6 * Lok.egz;
 }
 
-void rusiavimas(const vector<Stud>& students, vector<Stud>& vargsiukai, vector<Stud>& kietekai, bool sumediana) {
-    auto start = steady_clock::now();
-
-    for (const auto& student : students) {
-        if (sumediana) {
-            if (student.rezmed < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
-        } else {
-            if (student.rezvid < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
-        }
-    }
-
-    auto end = steady_clock::now();
-    duration<double> diff = duration_cast<duration<double>>(end - start);
-
-    cout << "Students were sorted to 'vargsiukai' and 'kietekai' in " << diff.count() << " s." << endl;
-}
-
-void ratefailas(const vector<Stud>& students, const string& filename, const string& title) {
-    auto start = steady_clock::now();
-
-    ofstream file(filename);
-    if (file.is_open()) {
-        file << title << ":\n";
-        file << left << setw(20) << "Vardas"
-             << setw(25) << "Pavardė"
-             << setw(30) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
-        file << "-----------------------------------------------------------------------" << endl;
-
-        for (const auto& student : students) {
-            file << left << setw(20) << student.vardas
-                 << setw(25) << student.pavarde
-                 << fixed << setprecision(2);
-            if (student.sumediana) {
-                file << student.rezmed << endl;
-            } else {
-                file << student.rezvid << endl;
-            }
-        }
-
-        file.close();
-    } else {
-        cout << "Nepavyko atidaryti " << filename << " failo." << endl;
-    }
-
-    auto end = steady_clock::now();
-    duration<double> diff = duration_cast<duration<double>>(end - start);
-    cout << "File " << filename << " created in " << diff.count() << " s." << endl;
-}
-
-void sortabc(vector<Stud>& students) {
-    auto start = steady_clock::now();
-
-    sort(students.begin(), students.end(), [](const Stud &a, const Stud &b) {
-        return toupper(a.vardas[0]) < toupper(b.vardas[0]);
-    });
-
-     auto end = steady_clock::now();
-     duration<double> diff = duration_cast<duration<double>>(end - start);
-    cout << "Students sorted by name in " << diff.count() << " s." << endl;
-}
-
-
 void output(Stud Lok) {
     cout << left << setw(18) << Lok.vardas
          << setw(20) << Lok.pavarde
@@ -267,53 +150,8 @@ void val(Stud &Lok) {
     Lok.rezvid = 0;
 }
 
-
-void testavimas() {
-    vector<string> failai = {
-        "studentai1000.txt",
-        "studentai10000.txt",
-        "studentai100000.txt",
-        "studentai1000000.txt",
-        "studentai10000000.txt"
-    };
-
-    vector<int> studentuSkaiciai = { 1000, 10000, 100000, 1000000, 10000000 };
-
-    for (size_t i = 0; i < failai.size(); ++i) {
-        const string& filename = failai[i];
-        int studentCount = studentuSkaiciai[i];
-
-        cout << "Testing " << filename << endl;
-
-        auto start = steady_clock::now();
-
-        genfailas(filename, studentCount);
-
-        vector<Stud> students;
-
-        nuskaitymas(students, filename);
-
-
-        vector<Stud> vargsiukai;
-        vector<Stud> kietekai;
-        bool sumediana = false;
-        rusiavimas(students, vargsiukai, kietekai, sumediana);
-
-        sortabc(kietekai);
-        sortabc(vargsiukai);
-
-        ratefailas(kietekai, "kietekai_" + filename, "Kietekai");
-        ratefailas(vargsiukai, "vargsiukai_" + filename, "Vargšiukai");
-
-
-        students.clear();
-
-        auto end = steady_clock::now();
-        duration<double> diff = duration_cast<duration<double>>(end - start);
-
-        cout << "Testing time for " << filename << ": " << diff.count() << " s." << endl;
-        cout << endl;
-    }
-
-    cout << "File testing done. " << endl;
-}
+template void nuskaitymas<vector<Stud>>(vector<Stud>& students, const string& filename);
+template void ratefailas<vector<Stud>>(const vector<Stud>& students, const string& filename, const string& title);
+template void rusiavimas<vector<Stud>>(const vector<Stud>& students, vector<Stud>& vargsiukai, vector<Stud>& kietekai, bool sumediana);
+template void sortabc<vector<Stud>>(vector<Stud>& students);
+template void testavimas<vector<Stud>>(vector<Stud>& students, const string& filename, int numStudents);

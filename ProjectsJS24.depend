@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1728933193 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/main.cpp
+1729861337 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/main.cpp
 	"mylib.h"
 	"stud.h"
 
-1728935764 /mif/stud3/2023/juse0005/c++/ProjectsJS24/mylib.h
+1729861988 /mif/stud3/2023/juse0005/c++/ProjectsJS24/mylib.h
 	<iostream>
 	<string>
 	<vector>
+	<list>
 	<numeric>
 	<iomanip>
 	<algorithm>
@@ -17,10 +18,14 @@
 	<fstream>
 	<sstream>
 	<chrono>
+	<list>
 
-1728933980 /mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.h
+1729862071 /mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.h
 	"mylib.h"
 
-1728936758 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.cpp
+1729867435 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.cpp
+	"stud.h"
+
+1729456217 /mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.cpp
 	"stud.h"
 

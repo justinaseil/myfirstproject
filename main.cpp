@@ -7,20 +7,28 @@ int main() {
     vector<Stud> vargsiukai;
     vector<Stud> kietekai;
     Stud Temp;
+    vector<int> numStudents = {1000, 10000, 100000, 1000000, 10000000};
     char choice;
     bool sumediana = false;
 
     while (true) {
-        cout << "Do you want to test the file generation and reading? (Y/N): ";
+        cout << "Do you want to test the file? (Y/N): ";
         cin >> choice;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (choice == 'Y' || choice == 'y') {
-            testavimas();
+            cout << "Testing with vector container." << endl;
 
-        cout << "Do you want to continue the program? (Y/N): ";
-        cin >> choice;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            for (int num : numStudents) {
+        vector<Stud> students;
+        string filename = "studentai" + to_string(num) + ".txt";
+        cout << "Testing with vector container for file: " << filename << endl;
+        testavimas(students, filename, num);
+    }
+
+    cout << "Do you want to continue the program? (Y/N): ";
+    cin >> choice;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (choice == 'N' || choice == 'n') {
             return 0;
@@ -33,7 +41,7 @@ int main() {
         break;
     } else {
         cout << "Error. Try again." << endl;
-    }
+        }
     }
 
     while (true) {
@@ -69,8 +77,8 @@ int main() {
             }
         }
 
-        for (int i = 0; i < vec1.size(); i++) {
-            vec1[i].sumediana = sumediana;
+        for (size_t i = 0; i < vec1.size(); ++i) {
+                vec1[i].sumediana = sumediana;
             if (sumediana) {
                 galutinismed(vec1[i]);
             } else {
@@ -142,17 +150,15 @@ int main() {
 
                 Temp.sumediana = sumediana;
                 if (sumediana) {
-                    galutinismed(Temp);
+                        galutinismed(Temp);
                 } else {
                     galutinisvid(Temp);
-                }
-
-                vec1.push_back(Temp);
-                val(Temp);
+                    }
+                    vec1.push_back(Temp);
+                    val(Temp);
             }
         }
     }
-
     rusiavimas(vec1, vargsiukai, kietekai, sumediana);
 
     sortabc(kietekai);
@@ -184,4 +190,5 @@ int main() {
     cin >> a;
 
     return 0;
+
 }

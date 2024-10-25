@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 #include <numeric>
 #include <iomanip>
 #include <algorithm>
@@ -14,12 +15,14 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <list>
 
 using std::endl;
 using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
+using std::list;
 using std::accumulate;
 using std::sort;
 using std::fixed;
@@ -36,6 +39,7 @@ using std::ofstream;
 using std::to_string;
 using namespace std::chrono;
 using std::runtime_error;
+using std::is_same;
 
 
 #endif // MYLIB_H_INCLUDED
