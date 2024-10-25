@@ -40,6 +40,13 @@ int main() {
         testavimas(students, filename, num);
         }
 
+        for (int num : numStudents) {
+        list<Stud> students;
+        string filename = "studentai" + to_string(num) + ".txt";
+        cout << "Testing with list container for file: " << filename << endl;
+        testavimas(students, filename, num);
+        }
+
 
     cout << "Do you want to continue the program? (Y/N): ";
     cin >> choice;
@@ -169,6 +176,8 @@ int main() {
                 } else {
                     galutinisvid(Temp);
                     }
+
+                    std::cout << "Student address in memory: " << &Temp << std::endl;
                     vec1.push_back(Temp);
                     val(Temp);
             }
