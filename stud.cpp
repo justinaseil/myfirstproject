@@ -155,3 +155,4 @@ template void ratefailas<vector<Stud>>(const vector<Stud>& students, const strin
 template void rusiavimas<vector<Stud>>(const vector<Stud>& students, vector<Stud>& vargsiukai, vector<Stud>& kietekai, bool sumediana);
 template void sortabc<vector<Stud>>(vector<Stud>& students);
 template void testavimas<vector<Stud>>(vector<Stud>& students, const string& filename, int numStudents);
+

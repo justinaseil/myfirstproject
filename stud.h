@@ -136,8 +136,6 @@ void testavimas(Container& students, const string& filename, int numStudents) {
 
     auto start = steady_clock::now();
 
-    genfailas(filename, numStudents);
-
     Container vargsiukai;
     Container kietekai;
 

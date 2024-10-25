@@ -17,14 +17,29 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (choice == 'Y' || choice == 'y') {
-            cout << "Testing with vector container." << endl;
 
-            for (int num : numStudents) {
+        cout << "Do you want to generate files (G) or you generated them before (B)?";
+        cin >> choice;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        if (choice == 'G' || choice == 'g') {
+                for (int num : numStudents) {
+                string filename = "studentai" + to_string(num) + ".txt";
+        genfailas(filename, num);
+        cout << endl;
+        }
+        }else if (choice == 'B' || choice == 'b'){
+        } else {
+            cout << "Error.Try again" << endl;
+        }
+        cout << "Testing with vector and list containers." << endl;
+
+        for (int num : numStudents) {
         vector<Stud> students;
         string filename = "studentai" + to_string(num) + ".txt";
         cout << "Testing with vector container for file: " << filename << endl;
         testavimas(students, filename, num);
-    }
+        }
+
 
     cout << "Do you want to continue the program? (Y/N): ";
     cin >> choice;
