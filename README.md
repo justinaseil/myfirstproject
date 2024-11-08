@@ -192,3 +192,42 @@ Naudojant 2 strategiją, greičiau rūšiuojama buvo su list konteineriu.
 
 ## Dvieju strategijų palyginimas 1.0.2
 
+## Testavimas su 1000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant list 1 | Naudojant vector 2 | Naudojant list 2 |
+|-----------------------------------|--------------------|------------------|--------------------|------------------|
+|**Rūšiavimas į dvi grupes**        | 0,000629631 s      | 0,000152593 s    | 0,011540375 s      | 0,000179277 s    |
+|**Bendras**                        | 0,0303778 s        | 0,84537075 s     | 0,81983675 s       | 0,02681985 s     |
+
+## Testavimas su 10000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant list 1 | Naudojant vector 2 | Naudojant list 2 |
+|-----------------------------------|--------------------|------------------|--------------------|------------------|
+|**Rūšiavimas į dvi grupes**        | 0,005090088 s      | 0,003865693 s    | 1,1513765 s        | 0,00137074 s     |
+|**Bendras**                        | 0,12921475 s       | 0,11952325 s     | 1,273715 s         | 0,122352 s       |
+
+## Testavimas su 100000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant list 1 | Naudojant vector 2 | Naudojant list 2 |
+|-----------------------------------|--------------------|------------------|--------------------|------------------|
+|**Rūšiavimas į dvi grupes**        | 0,03443775 s       | 0,038936575 s    | 119,305 s          | 0,01378835 s     |
+|**Bendras**                        | 1,0530575 s        | 0,98273975 s     | 120,12025 s        | 1,049332 s       |
+
+## Testavimas su 1000000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant list 1 | Naudojant vector 2 | Naudojant list 2 |
+|-----------------------------------|--------------------|------------------|--------------------|------------------|
+|**Rūšiavimas į dvi grupes**        | 0,29472 s          | 0,3636755 s      | daugiau nei 5min   | 0,096404575 s    |
+|**Bendras**                        | 9,76644 s          | 9,406325 s       | daugiau nei 5min   | 8,7514725 s      |
+
+## Testavimas su 10000000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant list 1 | Naudojant vector 2 | Naudojant list 2 |
+|-----------------------------------|--------------------|------------------|--------------------|------------------|
+|**Rūšiavimas į dvi grupes**        | 3,7298975 s        | 4,2699075 s      | daugiau nei 5min   | 0,96048525 s     |
+|**Bendras**                        | 93,78405 s         | 86,233425 s      | daugiau nei 5min   | 85,6233 s        |
+
+
+Pagal rezultatus matome, kad vector geriau veikia su 1 strategija, o su list konteineriu geriau veikia 2 strategija.
+
+
