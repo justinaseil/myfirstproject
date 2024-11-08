@@ -151,5 +151,44 @@ Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudoja
 
 Testavimai buvo atlikti išvedant 4 skirtingu testavimų su tais pačiais failais vidurkį
 
+## Testavimas su 1000 įrašų
 
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 0,011540375 s    | 0,000179277 s  |
+|**Bendras**                        | 0,81983675 s     | 0,02681985 s   |
+
+## Testavimas su 10000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 1,1513765 s      | 0,00137074 s   |
+|**Bendras**                        | 1,273715 s       | 0,122352 s     |
+
+
+## Testavimas su 100000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 119,305 s        | 0,01378835 s   |
+|**Bendras**                        | 120,12025 s      | 1,049332 s     |
+
+## Testavimas su 1000000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | daugiau nei 5min | 0,096404575 s  |
+|**Bendras**                        | daugiau nei 5min | 8,7514725 s    |
+
+## Testavimas su 10000000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | daugiau nei 5min | 0,96048525 s   |
+|**Bendras**                        | daugiau nei 5min | 85,6233 s      |
+
+Naudojant 2 strategiją, greičiau rūšiuojama buvo su list konteineriu.
+
+
+## Dvieju strategijų palyginimas 1.0.2
 
