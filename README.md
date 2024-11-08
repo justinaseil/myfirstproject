@@ -94,3 +94,62 @@
 Matome, kad konteinerio vector sparta yra didesnė nei list, išskyrus testavimą su didžiausiu kiekiu duomenų (10000000 įrašų). "Vargšiukų" duomenų buvo daugiau nei "kietekų" ir galime matyti, kad rušiuojant didesnį kiekį duomenų geriau pasirodė konteineris list, ypač rūšiuojant pagal vardus. Todėl pagal šį testavimą galima padaryti išvadą, kad list greičiau tvarkosi su didesniu kiekiu duomenų, o vector su mažesniu, bet visgi vector yra greitesnis.
 
 
+# Testavimas pagal strategijas
+
+## 1 strategija
+
+Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai)
+
+## 1 strategijos testavimas
+
+Testavimai buvo atlikti išvedant 4 skirtingu testavimų su tais pačiais failais vidurkį
+
+## Testavimas su 1000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 0,000629631 s    | 0,000152593 s  |
+|**Bendras**                        | 0,0303778 s      | 0,84537075 s   |
+
+## Testavimas su 10000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 0,005090088 s    | 0,003865693 s  |
+|**Bendras**                        | 0,12921475 s     | 0,11952325 s   |
+
+## Testavimas su 100000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 0,03443775 s     | 0,038936575 s  |
+|**Bendras**                        | 1,0530575 s      | 0,98273975 s   |
+
+## Testavimas su 1000000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 0,29472 s        | 0,3636755 s    |
+|**Bendras**                        | 9,76644 s        | 9,406325 s     |
+
+## Testavimas su 10000000 įrašų
+
+|Veiksmas                           | Naudojant vector | Naudojant list |
+|-----------------------------------|------------------|----------------|
+|**Rūšiavimas į dvi grupes**        | 3,7298975 s      | 4,2699075 s    |
+|**Bendras**                        | 93,78405 s       | 86,233425 s    |
+
+
+Naudojant 1 stretegiją greičiausiai į dvi grupes susirušiuoja su vector, kai duomenų yra daugiau, o kai mažiau greičiau rūšiuoja su list.
+
+
+## 2 strategija
+
+Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "vargšiukų" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik kietiakai. 
+
+## 2 strategijos testavimas
+
+Testavimai buvo atlikti išvedant 4 skirtingu testavimų su tais pačiais failais vidurkį
+
+
+
