@@ -1,5 +1,9 @@
 # myfirstproject
 
+# Programos naudojimosi instrukcija
+
+Paleidus koda yra klausiama, ar norima testuoti spartą. Atsakius taip galima pasirinkti, ar norima generuoti naujus failus, ar testuoti jau sugeneruotus ir programa pradeda testavima tiek su vector tiek su list konteineriais. Pasirinkę, kad nenorime testuoti failo, prieinama prie tolimesnės programos, kuri leidžia pasirinkti, ar norime nuskaityti duomenis iš failo, jeigu ne, ar norime generuoti failus. Ši programa leidia įrašyti studentų pažymius ir egzamino rezultatus arba juo automatiškai generuoti ir pasirinkti, ar galutinį balą skaičiuoti su mediana, ar vidurkiu. Galutinis rezultatas yra surūšiuojamas į vargšiukų failą, kuriame patenka mokiniai turintys mažesnį galutinį įvertinimą nei 5 arba į kietekų failą, kurių įvertinimai ne mažesnis nei 5.
+
 # Testavimo sistema
 
 ## CPU
@@ -94,9 +98,9 @@
 Matome, kad konteinerio vector sparta yra didesnė nei list, išskyrus testavimą su didžiausiu kiekiu duomenų (10000000 įrašų). "Vargšiukų" duomenų buvo daugiau nei "kietekų" ir galime matyti, kad rušiuojant didesnį kiekį duomenų geriau pasirodė konteineris list, ypač rūšiuojant pagal vardus. Todėl pagal šį testavimą galima padaryti išvadą, kad list greičiau tvarkosi su didesniu kiekiu duomenų, o vector su mažesniu, bet visgi vector yra greitesnis.
 
 
-# Testavimas pagal strategijas
+# Testavimas pagal strategijas 
 
-## 1 strategija
+## 1 strategija v1.0.1
 
 Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai)
 
@@ -147,7 +151,7 @@ Naudojant 1 stretegiją greičiausiai į dvi grupes susirušiuoja su vector, kai
 
 Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "vargšiukų" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik kietiakai. 
 
-## 2 strategijos testavimas
+## 2 strategijos testavimas v1.0.2
 
 Testavimai buvo atlikti išvedant 4 skirtingu testavimų su tais pačiais failais vidurkį
 
@@ -229,5 +233,53 @@ Naudojant 2 strategiją, greičiau rūšiuojama buvo su list konteineriu.
 
 
 Pagal rezultatus matome, kad vector geriau veikia su 1 strategija, o su list konteineriu geriau veikia 2 strategija.
+
+## 3 strategija
+
+Pažvelgus į išvadas galime matyti, kad greičiau veikia 2 strategija, todėl ją reikėtų patobulinti, kad veiktų sparčiai ir su vector ir patikrinti, ar tikrai suveikė.
+
+## 3 strategijos testavimas v1.0.3
+
+## Testavimas su 1000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant vector 2 | Naudojant vector 3 |
+|-----------------------------------|--------------------|--------------------|--------------------|
+|**Rūšiavimas į dvi grupes**        | 0,000629631 s      | 0,011540375 s      | 0,000272755 s      |
+|**Bendras**                        | 0,0303778 s        | 0,81983675 s       | 0,04578875 s       |
+
+
+## Testavimas su 10000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant vector 2 | Naudojant vector 3 |
+|-----------------------------------|--------------------|--------------------|--------------------|
+|**Rūšiavimas į dvi grupes**        | 0,005090088 s      | 1,1513765 s        | 0,00224726 s       |
+|**Bendras**                        | 0,12921475 s       | 1,273715 s         | 0,12082525 s       |
+
+
+## Testavimas su 100000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant vector 2 | Naudojant vector 3 |
+|-----------------------------------|--------------------|--------------------|--------------------|
+|**Rūšiavimas į dvi grupes**        | 0,03443775 s       | 119,305 s          | 0,02452585 s       |
+|**Bendras**                        | 1,0530575 s        | 120,12025 s        | 0,977035 s         |
+
+
+## Testavimas su 1000000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant vector 2 | Naudojant vector 3 |
+|-----------------------------------|--------------------|--------------------|--------------------|
+|**Rūšiavimas į dvi grupes**        | 0,29472 s          | daugiau nei 5min   | 0,22691425 s       |
+|**Bendras**                        | 9,76644 s          | daugiau nei 5min   | 9,169675 s         |
+
+
+## Testavimas su 10000000 įrašų
+
+|Veiksmas                           | Naudojant vector 1 | Naudojant vector 2 | Naudojant vector 3 |
+|-----------------------------------|--------------------|--------------------|--------------------|
+|**Rūšiavimas į dvi grupes**        | 3,7298975 s        | daugiau nei 5min   | 2,41553 s          |
+|**Bendras**                        | 93,78405 s         | daugiau nei 5min   | 90,86225 s         |
+
+Matome, kad optimizavus kodą, rūšiavimas ir bendrai visa programa vyksta sparčiau. 
+
 
 
