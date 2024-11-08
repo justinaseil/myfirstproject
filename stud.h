@@ -65,6 +65,7 @@ void nuskaitymas(Container& students, const string& filename) {
     duration<double> diff = duration_cast<duration<double>>(end - start);
 
     cout << "File " << filename << " read in " << diff.count() << " s." << endl;
+
 }
 
 template <typename Container>
@@ -101,34 +102,34 @@ void ratefailas(const Container& students, const string& filename, const string&
 }
 
 template <typename Container>
-void rusiavimas(const Container& students, Container& vargsiukai, Container& kietekai, bool sumediana) {
+void rusiavimas(Container& students, Container& vargsiukai, bool sumediana) {
     auto start = steady_clock::now();
 
-    for (const auto& student : students) {
-        if (sumediana && student.rezmed == 0) {
-            galutinismed(const_cast<Stud&>(student));
-        } else if (!sumediana && student.rezvid == 0) {
-            galutinisvid(const_cast<Stud&>(student));
+    auto it = students.begin();
+    while (it != students.end()) {
+        // Calculate the final grade if it hasn't been calculated yet
+        if (sumediana && it->rezmed == 0) {
+            galutinismed(*it);
+        } else if (!sumediana && it->rezvid == 0) {
+            galutinisvid(*it);
         }
 
-        if (sumediana) {
-            if (student.rezmed < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
+        // Check if the student is a "vargsiukas" based on the final grade
+        bool isVargsiukas = sumediana ? (it->rezmed < 5.0) : (it->rezvid < 5.0);
+
+        if (isVargsiukas) {
+            // Move "vargsiukas" student to vargsiukai container
+            vargsiukai.push_back(*it);
+            // Erase the student from the original students container
+            it = students.erase(it);
         } else {
-            if (student.rezvid < 5.0) {
-                vargsiukai.push_back(student);
-            } else {
-                kietekai.push_back(student);
-            }
+            ++it; // Move to the next student
         }
     }
 
     auto end = steady_clock::now();
     duration<double> diff = duration_cast<duration<double>>(end - start);
-    cout << "Students sorted into 'vargsiukai' and 'kietekai' in " << diff.count() << " s." << endl;
+    cout << "Students sorted into 'vargsiukai' and remaining 'kietekai' in " << diff.count() << " s." << endl;
 }
 
 template <typename Container>
@@ -137,16 +138,15 @@ void testavimas(Container& students, const string& filename, int numStudents) {
     auto start = steady_clock::now();
 
     Container vargsiukai;
-    Container kietekai;
 
     nuskaitymas(students, filename);
 
     bool sumediana = false;
-    rusiavimas(students, vargsiukai, kietekai, sumediana);
-    sortabc(kietekai);
+    rusiavimas(students, vargsiukai, sumediana);
+    sortabc(students);
     sortabc(vargsiukai);
 
-    ratefailas(kietekai, "kietekai_" + filename, "Kietekai");
+    ratefailas(students, "kietekai_" + filename, "Kietekai");
     ratefailas(vargsiukai, "vargsiukai_" + filename, "Vargšiukai");
 
     students.clear();

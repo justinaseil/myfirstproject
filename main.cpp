@@ -5,7 +5,6 @@
 int main() {
     vector<Stud> vec1;
     vector<Stud> vargsiukai;
-    vector<Stud> kietekai;
     Stud Temp;
     vector<int> numStudents = {1000, 10000, 100000, 1000000, 10000000};
     char choice;
@@ -34,19 +33,18 @@ int main() {
         cout << "Testing with vector and list containers." << endl;
 
         for (int num : numStudents) {
-        vector<Stud> students;
-        string filename = "studentai" + to_string(num) + ".txt";
-        cout << "Testing with vector container for file: " << filename << endl;
-        testavimas(students, filename, num);
-        }
-
-        for (int num : numStudents) {
         list<Stud> students;
         string filename = "studentai" + to_string(num) + ".txt";
         cout << "Testing with list container for file: " << filename << endl;
         testavimas(students, filename, num);
         }
 
+        for (int num : numStudents) {
+        vector<Stud> students;
+        string filename = "studentai" + to_string(num) + ".txt";
+        cout << "Testing with vector container for file: " << filename << endl;
+        testavimas(students, filename, num);
+        }
 
     cout << "Do you want to continue the program? (Y/N): ";
     cin >> choice;
@@ -183,9 +181,10 @@ int main() {
             }
         }
     }
-    rusiavimas(vec1, vargsiukai, kietekai, sumediana);
 
-    sortabc(kietekai);
+    rusiavimas(vec1, vargsiukai, sumediana);
+
+    sortabc(vec1);
     sortabc(vargsiukai);
 
 
@@ -193,7 +192,7 @@ int main() {
     cout << left << setw(18) << "Vardas" << setw(18) << "Pavardė" << setw(25) << "Galutinis (Vid.)/Galutinis (Med.)" << endl;
     cout << "--------------------------------------------------------------------------------" << endl;
 
-    for (const auto& student : kietekai) {
+    for (const auto& student : vec1) {
         output(student);
     }
 
@@ -205,7 +204,7 @@ int main() {
         output(student);
     }
 
-    ratefailas(kietekai, "kietekai.txt", "Kietekai");
+    ratefailas(vec1, "kietekai.txt", "Kietekai");
     ratefailas(vargsiukai, "vargsiukai.txt", "Vargšiukai");
 
 

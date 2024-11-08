@@ -150,15 +150,17 @@ void val(Stud &Lok) {
     Lok.rezvid = 0;
 }
 
+
+
 template void nuskaitymas<vector<Stud>>(vector<Stud>& students, const string& filename);
 template void ratefailas<vector<Stud>>(const vector<Stud>& students, const string& filename, const string& title);
-template void rusiavimas<vector<Stud>>(const vector<Stud>& students, vector<Stud>& vargsiukai, vector<Stud>& kietekai, bool sumediana);
+template void rusiavimas<vector<Stud>>(vector<Stud>& students, vector<Stud>& vargsiukai, bool sumediana);
 template void sortabc<vector<Stud>>(vector<Stud>& students);
 template void testavimas<vector<Stud>>(vector<Stud>& students, const string& filename, int numStudents);
 
 template void nuskaitymas<list<Stud>>(list<Stud>& students, const string& filename);
 template void ratefailas<list<Stud>>(const list<Stud>& students, const string& filename, const string& title);
-template void rusiavimas<list<Stud>>(const list<Stud>& students, list<Stud>& vargsiukai, list<Stud>& kietekai, bool sumediana);
+template void rusiavimas<list<Stud>>(list<Stud>& students, list<Stud>& vargsiukai, bool sumediana);
 template void sortabc<list<Stud>>(list<Stud>& students);
 template void testavimas<list<Stud>>(list<Stud>& students, const string& filename, int numStudents);
 
