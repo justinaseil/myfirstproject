@@ -101,31 +101,22 @@ void ratefailas(const Container& students, const string& filename, const string&
     cout << "File " << filename << " created in " << diff.count() << " s." << endl;
 }
 
+
 template <typename Container>
 void rusiavimas(Container& students, Container& vargsiukai, bool sumediana) {
     auto start = steady_clock::now();
 
-    auto it = students.begin();
-    while (it != students.end()) {
-        // Calculate the final grade if it hasn't been calculated yet
-        if (sumediana && it->rezmed == 0) {
-            galutinismed(*it);
-        } else if (!sumediana && it->rezvid == 0) {
-            galutinisvid(*it);
+    auto it = partition(students.begin(), students.end(), [sumediana](Stud& student) {
+        if (sumediana && student.rezmed == 0) {
+            galutinismed(student);
+        } else if (!sumediana && student.rezvid == 0) {
+            galutinisvid(student);
         }
+        return sumediana ? (student.rezmed < 5.0) : (student.rezvid < 5.0);
+    });
 
-        // Check if the student is a "vargsiukas" based on the final grade
-        bool isVargsiukas = sumediana ? (it->rezmed < 5.0) : (it->rezvid < 5.0);
-
-        if (isVargsiukas) {
-            // Move "vargsiukas" student to vargsiukai container
-            vargsiukai.push_back(*it);
-            // Erase the student from the original students container
-            it = students.erase(it);
-        } else {
-            ++it; // Move to the next student
-        }
-    }
+    vargsiukai.insert(vargsiukai.end(), students.begin(), it);
+    students.erase(students.begin(), it);
 
     auto end = steady_clock::now();
     duration<double> diff = duration_cast<duration<double>>(end - start);

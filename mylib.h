@@ -40,6 +40,7 @@ using std::to_string;
 using namespace std::chrono;
 using std::runtime_error;
 using std::is_same;
+using std::partition;
 
 
 #endif // MYLIB_H_INCLUDED

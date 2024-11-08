@@ -33,16 +33,16 @@ int main() {
         cout << "Testing with vector and list containers." << endl;
 
         for (int num : numStudents) {
-        list<Stud> students;
+        vector<Stud> students;
         string filename = "studentai" + to_string(num) + ".txt";
-        cout << "Testing with list container for file: " << filename << endl;
+        cout << "Testing with vector container for file: " << filename << endl;
         testavimas(students, filename, num);
         }
 
         for (int num : numStudents) {
-        vector<Stud> students;
+        list<Stud> students;
         string filename = "studentai" + to_string(num) + ".txt";
-        cout << "Testing with vector container for file: " << filename << endl;
+        cout << "Testing with list container for file: " << filename << endl;
         testavimas(students, filename, num);
         }
 
